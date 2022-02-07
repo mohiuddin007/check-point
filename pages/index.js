@@ -1,8 +1,29 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+import { Col, Row } from 'react-bootstrap'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+  const [textField, setTextField] = useState('')
+  const [isPalindrome, setIsPalindrome] = useState(false);
+
+  const palindromeChecker = async (e) => {
+       e.preventDefault();
+       const inputText = {
+         name: e.target.name.value
+       }
+       setTextField(inputText.name);
+
+       const reversedText = inputText.name.split('').reverse().join('');
+       if(inputText.name === reversedText){
+          setIsPalindrome(true);
+       }else{
+        setIsPalindrome(false);
+       }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,57 +33,34 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+       <Row className='justify-content-center'>  
+         <Col md={10} border border-secondary rounded>
+             <form onSubmit={palindromeChecker}>
+               <label htmlFor="name">Write your text</label>
+               <input type="text" id='name' autoComplete='name' placeholder='Write your text here' className='form-control'/>
+               <button type='submit' className='btn btn-secondary'>Submit</button>
+             </form>
+             <div className='mt-3 border border-secondary'>
+                 {
+                   isPalindrome === true && textField != '' ? <h4 className='text-success'>Yah, It is palindrome!</h4>
+                    : (isPalindrome === false && textField != '') && <h4 className='text-danger'>Sorry, It is not palindrome!</h4>
+                  }
+             </div>
+         </Col>
+       </Row>
       </main>
 
       <footer className={styles.footer}>
+       
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://mohiuddin-mazumder.web.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+         © 2022 Mohiuddin Mazumder. All Rights Reserved.
+          
         </a>
+        
       </footer>
     </div>
   )
