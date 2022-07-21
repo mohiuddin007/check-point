@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Col, Row, Button } from 'react-bootstrap'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -34,18 +34,22 @@ export default function Home() {
 
       <main className={styles.main}>
        <Row className='justify-content-center'>  
-         <Col md={10} border border-secondary rounded>
-             <form onSubmit={palindromeChecker}>
-               <label htmlFor="name">Write your text</label>
-               <input type="text" id='name' autoComplete='name' placeholder='Write your text here' className='form-control'/>
-               <button type='submit' className='btn btn-secondary'>Submit</button>
-             </form>
-             <div className='mt-3 border border-secondary'>
-                 {
-                   isPalindrome === true && textField != '' ? <h4 className='text-success'>Yah, It is palindrome!</h4>
-                    : (isPalindrome === false && textField != '') && <h4 className='text-danger'>Sorry, It is not palindrome!</h4>
-                  }
-             </div>
+         <Col md={12} >
+           <div className='border border-secondary rounded p-4'>
+             <h2 className='text-center'>Palindrome Checker</h2>
+              <form onSubmit={palindromeChecker}>
+                <label htmlFor="name">Write your text</label>
+                <textarea type="text" id='name' autoComplete='name' placeholder='Write your text here' className='form-control'/>
+                <Button type='submit' variant="secondary">Submit</Button>
+              </form>
+              <div className='mt-3 border border-secondary'>
+                  {
+                    isPalindrome === true && textField != '' ? <h4 className='text-success'>Yah, It&apos;s a palindrome!</h4>
+                      : (isPalindrome === false && textField != '') && <h4 className='text-danger'>Sorry, that&apos;s not a palindrome.</h4>
+                    }
+              </div> 
+           </div>
+            
          </Col>
        </Row>
       </main>
