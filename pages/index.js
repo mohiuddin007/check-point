@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { useState } from 'react'
-import { Col, Row, Button } from 'react-bootstrap'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -33,14 +31,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-       <Row className='justify-content-center'>  
-         <Col md={12} >
+       <div className='justify-content-center'>  
+         <div >
            <div className='border border-secondary rounded p-4'>
-             <h2 className='text-center'>Palindrome Checker</h2>
+             <h2 className='text-3xl text-green-600 p-2'>Palindrome Checker</h2>
               <form onSubmit={palindromeChecker}>
                 <label htmlFor="name">Write your text</label>
                 <textarea type="text" id='name' autoComplete='name' placeholder='Write your text here' className='form-control'/>
-                <Button type='submit' variant="secondary">Submit</Button>
+                <button type='submit' variant="secondary">Submit</button>
               </form>
               <div className='mt-3 border border-secondary'>
                   {
@@ -50,8 +48,8 @@ export default function Home() {
               </div> 
            </div>
             
-         </Col>
-       </Row>
+         </div>
+       </div>
       </main>
 
       <footer className={styles.footer}>
