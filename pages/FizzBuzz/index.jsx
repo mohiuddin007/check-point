@@ -21,6 +21,7 @@ export default function FizzBuzz() {
         setIsPalindrome(false);
        }
   }
+  
   return (
     <Layout>
       <div>FizzBuzz
