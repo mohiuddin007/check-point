@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-
+//dynamic import
 const Layout = dynamic(() => import('../layouts/layout'));
 
 export default function Home() {
