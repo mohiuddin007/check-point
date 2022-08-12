@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 const Layout = dynamic(() => import('../layouts/layout'));
 
 export default function Home() {
-  const [textField, setTextField] = useState('')
+  const [textField, setTextField] = useState('');
   const [isPalindrome, setIsPalindrome] = useState(false);
 
   const palindromeChecker = async (e) => {
